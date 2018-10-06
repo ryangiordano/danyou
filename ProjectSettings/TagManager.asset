@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Floor
+  - Wall
+  - Poop
+  - Food
+  - Spawn
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - Tamagotchi
+  - Items
+  - Background
+  - Backdrop
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Background
+    uniqueID: 2886261193
+    locked: 0
+  - name: Backdrop
+    uniqueID: 2442912101
+    locked: 0
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Tamagotchi
+    uniqueID: 3321999201
+    locked: 0
+  - name: Poop
+    uniqueID: 1666412379
+    locked: 0
+  - name: Items
+    uniqueID: 1710606859
+    locked: 0
