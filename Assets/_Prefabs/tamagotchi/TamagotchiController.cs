@@ -30,7 +30,6 @@ namespace Tamagotchi.Assets._Prefabs
         {
             _Timer.CheckForTick(() =>
             {
-                print("Printing");
                 ProcessTick();
             });
             UpdateTamagotchiMood();
@@ -78,7 +77,6 @@ namespace Tamagotchi.Assets._Prefabs
                 Instantiate(Poop, transform.position, transform.rotation);
             }
             _Tamagotchi.ProcessMoment();
-            print(_Tamagotchi.Memory.Count);
             _GameManager.UpdateValues();
         }
 

@@ -6,10 +6,18 @@ public class FruitController : MonoBehaviour
 {
 
     public GameManager _GameManager;
+    private Animator _Animator;
+    private FlushBehavior _FlushBehavior;
     public bool Hanging = false;
+    public bool Collected = false;
     // Use this for initialization
     void Start()
     {
+        _Animator = GetComponent<Animator>();
+        _Animator.Play("popin");
+        _FlushBehavior = _Animator.GetBehaviour<FlushBehavior>();
+
+        // _Animator.Play("idle");
         GameObject gameManagerObject = GameObject.FindWithTag("GameController");
         
         if (gameManagerObject != null)
@@ -21,17 +29,22 @@ public class FruitController : MonoBehaviour
             Debug.Log("Game manager not found.");
         }
     }
+    public void CollectFruit(){
+        Collected = true;
+        Destroy(gameObject);
+    }
     private void OnMouseDown()
     {
         // _GameMananger.AddToBag();
         _GameManager.FeedTamagotchi();
-        Destroy(gameObject);
-
+        _Animator.Play("popout");
     }
 
     // Update is called once per frame
     void Update()
     {
-
+		if(_FlushBehavior.Finished && !Collected){
+			CollectFruit();
+		}
     }
 }

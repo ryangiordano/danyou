@@ -54,14 +54,14 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\_Models\PlayerProgress.cs" />
-     <Compile Include="Assets\_Plugins\EZ Camera Shake\Demo\Sample Scripts\ShakeByDistance.cs" />
-     <Compile Include="Assets\_Plugins\EZ Camera Shake\Demo\Sample Scripts\ShakeOnKeyPress.cs" />
-     <Compile Include="Assets\_Plugins\EZ Camera Shake\Demo\Sample Scripts\ShakeOnTrigger.cs" />
-     <Compile Include="Assets\_Plugins\EZ Camera Shake\Demo\ShakeDemo.cs" />
-     <Compile Include="Assets\_Plugins\EZ Camera Shake\Scripts\CameraShakeInstance.cs" />
-     <Compile Include="Assets\_Plugins\EZ Camera Shake\Scripts\CameraShakePresets.cs" />
-     <Compile Include="Assets\_Plugins\EZ Camera Shake\Scripts\CameraShaker.cs" />
-     <Compile Include="Assets\_Plugins\EZ Camera Shake\Scripts\Utilities\CameraUtilities.cs" />
+     <Compile Include="Assets\_Plugins\EZCameraShake\Demo\Sample Scripts\ShakeByDistance.cs" />
+     <Compile Include="Assets\_Plugins\EZCameraShake\Demo\Sample Scripts\ShakeOnKeyPress.cs" />
+     <Compile Include="Assets\_Plugins\EZCameraShake\Demo\Sample Scripts\ShakeOnTrigger.cs" />
+     <Compile Include="Assets\_Plugins\EZCameraShake\Demo\ShakeDemo.cs" />
+     <Compile Include="Assets\_Plugins\EZCameraShake\Scripts\CameraShakeInstance.cs" />
+     <Compile Include="Assets\_Plugins\EZCameraShake\Scripts\CameraShakePresets.cs" />
+     <Compile Include="Assets\_Plugins\EZCameraShake\Scripts\CameraShaker.cs" />
+     <Compile Include="Assets\_Plugins\EZCameraShake\Scripts\Utilities\CameraUtilities.cs" />
      <Compile Include="Assets\_Plugins\KriptoFX\Realistic Effects Pack v4\PostEffects\Mobile\RFX4_DistortionAndBloom.cs" />
      <Compile Include="Assets\_Plugins\KriptoFX\Realistic Effects Pack v4\PostEffects\PC\Bloom\Bloom_RFX4.cs" />
      <Compile Include="Assets\_Plugins\KriptoFX\Realistic Effects Pack v4\PostEffects\PC\Common\ImageEffectHelper_FPS.cs" />
@@ -410,7 +410,6 @@
      <Compile Include="Assets\_Plugins\ParadoxNotion\FlowCanvas\Module\Ports.cs" />
      <Compile Include="Assets\_Plugins\ParadoxNotion\FlowCanvas\Module\TypeConverter.cs" />
      <Compile Include="Assets\_Plugins\ParadoxNotion\FlowCanvas\Module\Wild.cs" />
-     <Compile Include="Assets\_Plugins\SimpleJSON.cs" />
      <Compile Include="Assets\_Prefabs\boundaries\Inverted2DEdges.cs" />
      <Compile Include="Assets\_Prefabs\items\Food\FruitController.cs" />
      <Compile Include="Assets\_Prefabs\items\Fruit.cs" />
@@ -421,11 +420,14 @@
      <Compile Include="Assets\_Prefabs\poop\PoopController.cs" />
      <Compile Include="Assets\_Prefabs\tamagotchi\TamagotchiController.cs" />
      <Compile Include="Assets\_Prefabs\tamagotchi\TamagotchiModel.cs" />
+     <Compile Include="Assets\_Prefabs\tree\FruitSpawnController.cs" />
      <Compile Include="Assets\_Prefabs\tree\TreeController.cs" />
      <Compile Include="Assets\_Prefabs\tree\TreeModel.cs" />
      <Compile Include="Assets\_Scripts\DataManager.cs" />
      <Compile Include="Assets\_Scripts\GameManager.cs" />
      <Compile Include="Assets\Utility\ITimeable.cs" />
+     <Compile Include="Assets\Utility\Stage\ProgressManager.cs" />
+     <Compile Include="Assets\Utility\Stage\ProgressNode.cs" />
      <Compile Include="Assets\Utility\Timer.cs" />
      <Compile Include="Assets\Utility\Walkable.cs" />
      <None Include="Assets\_Plugins\KriptoFX\Realistic Effects Pack v4\Shaders\RFX4_CutoutBorderMobile.shader" />
