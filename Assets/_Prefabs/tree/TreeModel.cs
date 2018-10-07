@@ -31,11 +31,15 @@ namespace Tamagotchi.Assets._Prefabs.tree
         {
             var toAdd = IsWatered ? 2 : 1;
             CurrentExp += toAdd;
-            var currentStage = _ProgressManager.GetNodeAtStage(CurrentStage);
-            if (CurrentExp >= currentStage.ExpToNext)
+            if (CurrentStage != NumStages)
             {
-                LevelUp();
+                var currentStage = _ProgressManager.GetNodeAtStage(CurrentStage);
+                if (CurrentExp >= currentStage.ExpToNext)
+                {
+                    LevelUp();
+                }
             }
+
             IsWatered = false;
         }
 
@@ -54,6 +58,7 @@ namespace Tamagotchi.Assets._Prefabs.tree
 
         public void LevelUp()
         {
+            CurrentStage = CurrentStage + 1 > NumStages ? CurrentStage : CurrentStage + 1;
         }
 
     }

@@ -423,6 +423,7 @@
      <Compile Include="Assets\_Prefabs\tree\FruitSpawnController.cs" />
      <Compile Include="Assets\_Prefabs\tree\TreeController.cs" />
      <Compile Include="Assets\_Prefabs\tree\TreeModel.cs" />
+     <Compile Include="Assets\_Prefabs\tree\TreeNodeController.cs" />
      <Compile Include="Assets\_Scripts\DataManager.cs" />
      <Compile Include="Assets\_Scripts\GameManager.cs" />
      <Compile Include="Assets\Utility\ITimeable.cs" />
