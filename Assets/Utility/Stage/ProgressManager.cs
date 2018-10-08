@@ -20,4 +20,14 @@ namespace Tamagotchi.Assets.Utility.Stage
             return Progress.Find((progressNode) => progressNode.Stage == stage);
         }
     }
+    public class ProgressNode
+    {
+        public int ExpToNext { get; set; }
+        public int Stage { get; set; }
+        public ProgressNode(int stage, float progressionCurve)
+        {
+            Stage = stage;
+            ExpToNext = (int)(stage * progressionCurve);
+        }
+    }
 }

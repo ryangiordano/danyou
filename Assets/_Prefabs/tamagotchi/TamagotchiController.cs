@@ -24,14 +24,13 @@ namespace Tamagotchi.Assets._Prefabs
             _Timer = new Timer(_Tamagotchi.LastTick);
 
             _Animator = GetComponent<Animator>();
+        
+            StartCoroutine(_Timer.CheckForTick(ProcessTick));
+
 
         }
         public void Update()
         {
-            _Timer.CheckForTick(() =>
-            {
-                ProcessTick();
-            });
             UpdateTamagotchiMood();
         }
         public void Feed()

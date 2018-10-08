@@ -1,5 +1,7 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using Tamagotchi.Assets.Utility;
 using UnityEngine;
 
 public class FruitController : MonoBehaviour
@@ -10,15 +12,20 @@ public class FruitController : MonoBehaviour
     private FlushBehavior _FlushBehavior;
     public bool Hanging = false;
     public bool Collected;
+    private Timer _Timer;
+    private DateTime LastTick = DateTime.Now;
     // Use this for initialization
     void Start()
     {
         _Animator = GetComponent<Animator>();
         _Animator.Play("popin");
         _FlushBehavior = _Animator.GetBehaviour<FlushBehavior>();
-
+        _Timer = new Timer(LastTick);
         // _Animator.Play("idle");
         GameObject gameManagerObject = GameObject.FindWithTag("GameController");
+        StartCoroutine(_Timer.CheckForTick(()=>{
+            print("Fruit");
+        }));
 
         if (gameManagerObject != null)
         {
@@ -48,5 +55,8 @@ public class FruitController : MonoBehaviour
         {
             CollectFruit();
         }
+    }
+    private void OnCollisionEnter2D(Collision2D other)
+    {
     }
 }

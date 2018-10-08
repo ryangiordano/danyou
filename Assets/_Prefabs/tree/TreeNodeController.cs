@@ -1,15 +1,14 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using Tamagotchi.Assets._Prefabs.tree;
 using Tamagotchi.Assets.Utility;
+using Tamagotchi.Assets.Utility.Stage;
 using UnityEngine;
 
 public class TreeNodeController : MonoBehaviour
 {
-    public GameObject Tree_1;
-    public GameObject Tree_2;
-    public GameObject Tree_3;
-    public GameObject Tree_4;
+    public List<GameObject> Trees;
     private TreeModel _Tree;
     public int CurrentExp;
 
@@ -18,59 +17,55 @@ public class TreeNodeController : MonoBehaviour
     private Timer _Timer;
     public GameObject Fruit;
     public float ProgressionCurve;
+    public DateTime LastTick { get; set; }
+    public int Experience { get; set; }
+    public bool IsWatered { get; set; }
+    public List<Point> History { get; set; }
+    private ProgressManager _ProgressManager { get; set; }
 
     // Use this for initialization
     void Start()
     {
+        LastTick = DateTime.Now;
+        // _Tree = new TreeModel(CurrentStage, CurrentExp, NumStages);
+        _Timer = new Timer(LastTick);
 
-        _Tree = new TreeModel(CurrentStage, CurrentExp, NumStages);
-        _Timer = new Timer(_Tree.LastTick);
-		SetActiveStage();
+        _ProgressManager = new ProgressManager(NumStages, 10);
+        if (CurrentStage > 1)
+        {
+            CurrentExp = _ProgressManager.GetNodeAtStage(CurrentStage - 1).ExpToNext;
+        }
+        StartCoroutine(_Timer.CheckForTick(() =>
+        {
+            Debug.Log(CurrentStage);
+            ProcessMoment();
+            SetActiveStage();
+            SpawnFruit();
+        }));
+
+        SetActiveStage();
     }
 
     // Update is called once per frame
     void Update()
     {
-        _Timer.CheckForTick(() =>
-        {
-            Debug.Log(_Tree.CurrentStage);
-            CurrentStage = _Tree.CurrentStage;
-            SetActiveStage();
-            SpawnFruit();
-            _Tree.ProcessMoment();
-
-        });
     }
     public void SetActiveStage()
     {
-		// Todo improve this process.
-        switch (CurrentStage)
+        Trees.ForEach((tree) =>
         {
-            case 1:
-                Tree_1.SetActive(true);
-                Tree_2.SetActive(false);
-                Tree_3.SetActive(false);
-                Tree_4.SetActive(false);
-                break;
-            case 2:
-                Tree_1.SetActive(false);
-                Tree_2.SetActive(true);
-                Tree_3.SetActive(false);
-                Tree_4.SetActive(false);
-                break;
-            case 3:
-                Tree_1.SetActive(false);
-                Tree_2.SetActive(false);
-                Tree_3.SetActive(true);
-                Tree_4.SetActive(false);
-                break;
-            case 4:
-                Tree_1.SetActive(false);
-                Tree_2.SetActive(false);
-                Tree_3.SetActive(false);
-                Tree_4.SetActive(true);
-                break;
-        }
+            var controller = tree.GetComponent<TreeController>();
+            if (controller.Stage == CurrentStage)
+            {
+                tree.SetActive(true);
+            }
+            else
+            {
+                tree.SetActive(false);
+            }
+
+        });
+
     }
     public void SpawnFruit()
     {
@@ -78,14 +73,16 @@ public class TreeNodeController : MonoBehaviour
         switch (CurrentStage)
         {
             case 3:
-                var VacantNodes3 = Tree_3.GetComponent<TreeController>()
+                var VacantNodes3 = Trees.Find((tree) => tree.GetComponent<TreeController>().Stage == 3)
+                    .GetComponent<TreeController>()
                     .SpawnNodes
                     .FindAll((s) => !s.GetComponent<FruitSpawnController>().Occupied);
 
                 FruitSpawnSmall(VacantNodes3, 1);
                 break;
             case 4:
-                var VacantNodes4 = Tree_4.GetComponent<TreeController>()
+                var VacantNodes4 = Trees.Find((tree) => tree.GetComponent<TreeController>().Stage == 4)
+                    .GetComponent<TreeController>()
                     .SpawnNodes
                     .FindAll((s) => !s.GetComponent<FruitSpawnController>().Occupied);
 
@@ -99,7 +96,7 @@ public class TreeNodeController : MonoBehaviour
         {
             if (vacantNodes.Count >= 1)
             {
-                var randIdx = Random.Range(0, vacantNodes.Count);
+                var randIdx = UnityEngine.Random.Range(0, vacantNodes.Count);
                 var randomNode = vacantNodes[randIdx];
                 var instantiated = Instantiate(Fruit, randomNode.transform.position, randomNode.transform.rotation);
                 instantiated.transform.localScale = new Vector3(.5f, .5f, 0);
@@ -111,8 +108,51 @@ public class TreeNodeController : MonoBehaviour
 
 
     }
+    public void ProcessMoment()
+    {
+        var toAdd = IsWatered ? 2 : 1;
+        CurrentExp += toAdd;
+        if (CurrentStage != NumStages)
+        {
+            var currentStage = _ProgressManager.GetNodeAtStage(CurrentStage);
+            if (CurrentExp >= currentStage.ExpToNext)
+            {
+                LevelUp();
+            }
+        }
+
+        IsWatered = false;
+    }
+    public void RecordHistory()
+    {
+        var point = new Point
+        {
+            IsWatered = IsWatered,
+        };
+        if (History.Count >= 10)
+        {
+            History.RemoveAt(0);
+        }
+        History.Add(point);
+    }
+
+    public void LevelUp()
+    {
+        CurrentExp = _ProgressManager.GetNodeAtStage(CurrentStage).ExpToNext;
+        CurrentStage = CurrentStage + 1 > NumStages ? CurrentStage : CurrentStage + 1;
+    }
+
     public void WaterTree()
     {
-        _Tree.IsWatered = true;
+        IsWatered = true;
+    }
+}
+
+public class Point
+{
+    public bool IsWatered { get; set; }
+    public Point()
+    {
+
     }
 }

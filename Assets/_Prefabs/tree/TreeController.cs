@@ -9,6 +9,7 @@ public class TreeController : MonoBehaviour
 {
     public GameObject Fruit;
     public List<GameObject> SpawnNodes;
+    public int Stage;
 
     // Use this for initialization
     void Start()
@@ -19,24 +20,6 @@ public class TreeController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-    }
-    public void FruitSpawnSmall(List<GameObject> vacantNodes, int toSpawn)
-    {
-        for (int i = 0; i < toSpawn; i++)
-        {
-            if (vacantNodes.Count >= 1)
-            {
-                var randIdx = Random.Range(0, vacantNodes.Count);
-                var randomNode = vacantNodes[randIdx];
-                var instantiated = Instantiate(Fruit, randomNode.transform.position, randomNode.transform.rotation);
-                instantiated.transform.localScale = new Vector3(.5f, .5f, 0);
-                var rb = instantiated.GetComponent<Rigidbody2D>();
-                rb.isKinematic = true;
-                vacantNodes.RemoveAt(randIdx);
-            }
-        }
-
 
     }
 

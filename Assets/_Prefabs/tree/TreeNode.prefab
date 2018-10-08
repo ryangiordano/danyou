@@ -1054,6 +1054,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Fruit: {fileID: 1485771676043062, guid: ed8f86778f956034ab74ee653637e253, type: 2}
   SpawnNodes: []
+  Stage: 2
 --- !u!114 &114191053971781102
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1093,6 +1094,11 @@ MonoBehaviour:
   Tree_2: {fileID: 1228425621280802}
   Tree_3: {fileID: 1372616992380644}
   Tree_4: {fileID: 1380356110210126}
+  Trees:
+  - {fileID: 1349113197625932}
+  - {fileID: 1228425621280802}
+  - {fileID: 1372616992380644}
+  - {fileID: 1380356110210126}
   CurrentExp: 0
   CurrentStage: 1
   NumStages: 4
@@ -1140,6 +1146,7 @@ MonoBehaviour:
   - {fileID: 1293923915918636}
   - {fileID: 1958246089276206}
   - {fileID: 1514193307357968}
+  Stage: 4
 --- !u!114 &114711633278190992
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1177,6 +1184,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Fruit: {fileID: 1485771676043062, guid: ed8f86778f956034ab74ee653637e253, type: 2}
   SpawnNodes: []
+  Stage: 1
 --- !u!114 &114946348362609052
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1191,6 +1199,7 @@ MonoBehaviour:
   Fruit: {fileID: 1485771676043062, guid: ed8f86778f956034ab74ee653637e253, type: 2}
   SpawnNodes:
   - {fileID: 1882962657282794}
+  Stage: 3
 --- !u!212 &212226891246769762
 SpriteRenderer:
   m_ObjectHideFlags: 1

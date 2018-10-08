@@ -428,7 +428,6 @@
      <Compile Include="Assets\_Scripts\GameManager.cs" />
      <Compile Include="Assets\Utility\ITimeable.cs" />
      <Compile Include="Assets\Utility\Stage\ProgressManager.cs" />
-     <Compile Include="Assets\Utility\Stage\ProgressNode.cs" />
      <Compile Include="Assets\Utility\Timer.cs" />
      <Compile Include="Assets\Utility\Walkable.cs" />
      <None Include="Assets\_Plugins\KriptoFX\Realistic Effects Pack v4\Shaders\RFX4_CutoutBorderMobile.shader" />
