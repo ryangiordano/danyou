@@ -1,5 +1,8 @@
+using System;
 using System.Collections.Generic;
 using Tamagotchi.Assets.Utility;
+using UnityEngine;
+using UnityEngine.UI;
 
 namespace Tamagotchi.Assets._Prefabs.items.Bag
 {
@@ -9,19 +12,27 @@ namespace Tamagotchi.Assets._Prefabs.items.Bag
         private ItemRepository _ItemRepository;
         public Dictionary<int, int> ItemsInBag;
         public GameManager _GameManager;
+        public GameObject ItemChoice;
 
         private void Start()
         {
+            gameObject.SetActive(false);
             ItemsInBag = new Dictionary<int, int>();
             // DontDestroyOnLoad(gameObject);
             _ItemRepository = FindComponentByObjectTag<ItemRepository>("ItemRepository");
             _GameManager = FindComponentByObjectTag<GameManager>("GameController");
 
-            EventManager.StartListening("OpenBag", () =>
+            EventManager.StartListening("ToggleBag", () =>
             {
-                print("Bag opening");
+                ToggleBag();
             });
+            UpdateBagContents();
 
+        }
+        public void ToggleBag()
+        {
+            UpdateBagContents();
+            gameObject.SetActive(!gameObject.activeSelf);
         }
         public void AddItem(int id)
         {
@@ -31,18 +42,47 @@ namespace Tamagotchi.Assets._Prefabs.items.Bag
             }
             else
             {
-                ItemsInBag[id] = 0;
+                ItemsInBag[id] = 1;
+            }
+            UpdateBagContents();
+
+        }
+        private void UpdateBagContents()
+        {
+            foreach (Transform child in transform)
+            {
+                Destroy(child.gameObject);
+            }
+            int i = 0;
+            foreach (var item in ItemsInBag)
+            {
+                var offset = ItemsInBag.Count == 1 ? 120 : 120 - (i * 35);
+                var itemChoice = Instantiate(ItemChoice, gameObject.transform);
+                itemChoice.GetComponent<Transform>().localPosition = new Vector3(0, offset, 0);
+                var repoItem = _ItemRepository.GetItemById(item.Key);
+                print(item.Key);
+                var itemController = itemChoice.GetComponent<ItemChoice>();
+                itemController.Name = repoItem.name;
+                itemController.Id = repoItem.id;
+                itemController.Count = item.Value;
+                //TODO: Make this more generic than accesing the fruit 
+                var itemSprite = _ItemRepository.GetSpriteByName(repoItem.sprite);
+                itemController.ItemImage.GetComponent<Image>().sprite = itemSprite;
+                itemController.UpdateValues();
+                i++;
             }
         }
         public void UseItem(int id)
         {
-            print(ItemsInBag);
-            print(id);
             if (ItemsInBag.ContainsKey(id) && ItemsInBag[id] > 0)
             {
                 ItemsInBag[id]--;
-                var item = _ItemRepository.ItemGameObjects.Find((i) => i.GetComponent<FruitController>().Id == id);
+                var item = _ItemRepository.GetItemById(id);
                 _GameManager.FeedTamagotchi(item);
+                if(ItemsInBag[id] == 0){
+                    ItemsInBag.Remove(id);
+                }
+                UpdateBagContents();
             }
         }
         private void Update()

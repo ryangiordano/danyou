@@ -9,7 +9,6 @@ using Tamagotchi.Assets._Prefabs.items.Bag;
 public class PlayerController : CustomMonoBehaviour
 {
     public int Currency { get; set; }
-    private BagController _PlayerBag;
     private GameManager _GameManager;
     // public ICollection<Item> Items { get; set; }
     // public ICollection<TamagotchiCharacter> Tamagotchis { get; set; }
@@ -17,7 +16,6 @@ public class PlayerController : CustomMonoBehaviour
     void Start()
     {
         _GameManager = FindComponentByObjectTag<GameManager>("GameController");
-        _PlayerBag = FindComponentByObjectTag<BagController>("BagController");
     }
 
     // Update is called once per frame

@@ -412,6 +412,7 @@
      <Compile Include="Assets\_Plugins\ParadoxNotion\FlowCanvas\Module\Wild.cs" />
      <Compile Include="Assets\_Prefabs\boundaries\Inverted2DEdges.cs" />
      <Compile Include="Assets\_Prefabs\items\Bag\BagController.cs" />
+     <Compile Include="Assets\_Prefabs\items\Bag\ItemChoice.cs" />
      <Compile Include="Assets\_Prefabs\items\Food\FruitController.cs" />
      <Compile Include="Assets\_Prefabs\items\Fruit.cs" />
      <Compile Include="Assets\_Prefabs\items\Item.cs" />

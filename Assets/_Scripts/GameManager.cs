@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Tamagotchi.Assets._Prefabs;
+using Tamagotchi.Assets._Prefabs.items;
 using Tamagotchi.Assets._Prefabs.items.Bag;
 using Tamagotchi.Assets._Scripts;
 using Tamagotchi.Assets.Utility;
@@ -24,7 +25,6 @@ public class GameManager : CustomMonoBehaviour
     void Start()
     {
         DontDestroyOnLoad(gameObject);
-        _BagController = FindComponentByObjectTag<BagController>("BagController");
         _Timer = GetComponent<Timer>();
         _EventManager = GetComponent<EventManager>();
         _TamagotchiController = _TamagotchiController.GetComponent<TamagotchiController>();
@@ -49,7 +49,7 @@ public class GameManager : CustomMonoBehaviour
         SatisfactionText.text = _TamagotchiController._Tamagotchi.Satisfaction.ToString();
 
     }
-    public void FeedTamagotchi(GameObject item)
+    public void FeedTamagotchi(Item item)
     {
         _TamagotchiController.Feed(item);
         UpdateValues();
@@ -57,8 +57,8 @@ public class GameManager : CustomMonoBehaviour
     public void AddToBag(int id){
         _BagController.AddItem(id);
     }
-    public void OpenBag()
+    public void ToggleBag()
     {
-        EventManager.TriggerEvent("OpenBag");
+        EventManager.TriggerEvent("ToggleBag");
     }
 }

@@ -11,6 +11,8 @@ public class FruitController : CustomMonoBehaviour
     public Transform _Transform;
     public Rigidbody2D _Rigidbody;
     private Animator _Animator;
+    public GameObject Body;
+    public GameObject Face;
     private FlushBehavior _FlushBehavior;
     public bool Hanging = false;
     public bool Collected;
@@ -59,8 +61,6 @@ public class FruitController : CustomMonoBehaviour
     private void OnMouseDown()
     {
         _GameManager.AddToBag(Id);
-        // _GameManager.FeedTamagotchi();
-
         _Animator.SetTrigger("PoppedOut");
     }
     private void OnDestroy()

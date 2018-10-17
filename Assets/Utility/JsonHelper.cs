@@ -1,27 +1,28 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Tamagotchi.Assets.Utility
 {
     public static class JsonHelper
     {
-        public static T[] FromJson<T>(string json)
+        public static List<T> FromJson<T>(string json)
         {
             Wrapper<T> wrapper = JsonUtility.FromJson<Wrapper<T>>(json);
             return wrapper.Items;
         }
 
-        public static string ToJson<T>(T[] array)
+        public static string ToJson<T>(List<T> list)
         {
             Wrapper<T> wrapper = new Wrapper<T>();
-            wrapper.Items = array;
+            wrapper.Items = list;
             return JsonUtility.ToJson(wrapper);
         }
 
-        public static string ToJson<T>(T[] array, bool prettyPrint)
+        public static string ToJson<T>(List<T> list, bool prettyPrint)
         {
             Wrapper<T> wrapper = new Wrapper<T>();
-            wrapper.Items = array;
+            wrapper.Items = list;
             return JsonUtility.ToJson(wrapper, prettyPrint);
         }
         public static string AppendItems(string value)
@@ -33,7 +34,7 @@ namespace Tamagotchi.Assets.Utility
         [Serializable]
         private class Wrapper<T>
         {
-            public T[] Items;
+            public List<T> Items;
         }
     }
 }

@@ -9,35 +9,36 @@ namespace Tamagotchi.Assets._Prefabs.items
     public class ItemRepository : CustomMonoBehaviour
     {
         public List<GameObject> ItemGameObjects;
-        private Item[] Items;
-        private string FileName = "items.json";
+        public List<Item> Items;
+        public Sprite[] Sprites;
+        private string PathToItems = "_Prefabs/items/Food/";
         private void Start()
         {
+            DontDestroyOnLoad(gameObject);
             LoadGameData();
+            string filePath = Path.Combine(Application.dataPath, PathToItems + "fruitbody");
+            Sprites = Resources.LoadAll<Sprite>("fruitbody");
+
+        }
+        public Item GetItemById(int id)
+        {
+            return Items.Find((i) => i.id == id);
+        }
+        public Sprite GetSpriteByName(string name)
+        {
+            return Array.Find(Sprites, (sprite) =>sprite.name == name);
         }
         private void LoadGameData()
         {
             // Path.Combine combines strings into a file path
             // Application.StreamingAssets points to Assets/StreamingAssets in the Editor, and the StreamingAssets folder in a build
-            string filePath = Path.Combine(Application.streamingAssetsPath, FileName);
+            string filePath = Path.Combine(Application.streamingAssetsPath, "items.json");
             if (File.Exists(filePath))
             {
-                            // Read the json from the file into a string
-            string dataAsJson = File.ReadAllText(filePath); 
-            // Pass the json to JsonUtility, and tell it to create a GameData object from it
-            string newData = JsonHelper.AppendItems(dataAsJson);
-            var loadedData = JsonHelper.FromJson<Item>(newData);
+                string dataAsJson = File.ReadAllText(filePath);
+                string newData = JsonHelper.AppendItems(dataAsJson);
+                Items = JsonHelper.FromJson<Item>(newData);
 
-            // Retrieve the allRoundData property of loadedData
-            print(loadedData.Length);
-            foreach (var item in loadedData)
-            {
-                print(item.name);
-            }
-                // TextAsset jsonText = Resources.Load(filePath) as  TextAsset;
-                // var jsonObj = JsonHelper.FromJson<Item[]>(jsonText.text);
-                // // JsonHelper.FromJson<Item[]>(jsonObj);
-                // print(jsonObj);
             }
             else
             {

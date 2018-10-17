@@ -31,10 +31,9 @@ namespace Tamagotchi.Assets._Prefabs
         {
             UpdateTamagotchiMood();
         }
-        public void Feed(GameObject item)
+        public void Feed(Item item)
         {
-            var itemController = item.GetComponent<FruitController>();
-            var potency = itemController.Potency;
+            var potency = item.potency;
             // var flavor = itemController.Flavor;
             if (_Tamagotchi.CurrentHunger == 0)
             {

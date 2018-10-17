@@ -11,6 +11,7 @@ TagManager:
   - Spawn
   - BagController
   - ItemRepository
+  - Bag
   layers:
   - Default
   - TransparentFX

@@ -36,7 +36,6 @@ public class TreeNodeController : CustomMonoBehaviour
         }
         EventManager.StartListening("Tick", () =>
         {
-            Debug.Log(CurrentStage);
             ProcessMoment();
             SetActiveStage();
             SpawnFruit();

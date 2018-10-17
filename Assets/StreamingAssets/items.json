@@ -1,19 +1,28 @@
 [{
         "id": 0,
+        "name": "Apple",
+        "sprite": "fruitbody_0",
+        "untilRipe": 10,
+        "flavor": "sour",
+        "potency": 5,
+        "description": "An apple a day keeps the doctor away."
+    },
+    {
+        "id": 1,
         "name": "Orange",
-        "sprite": "Fruit_3",
+        "sprite": "fruitbody_1",
         "untilRipe": 10,
         "flavor": "sweet",
         "potency": 5,
         "description": "Orange of the color orange."
     },
     {
-        "id": 1,
-        "name": "Apple",
-        "sprite": "Fruit_0",
+        "id": 2,
+        "name": "Youzi",
+        "sprite": "fruitbody_2",
         "untilRipe": 10,
-        "flavor": "sour",
+        "flavor": "bitter",
         "potency": 5,
-        "description": "An apple a day keeps the doctor away."
+        "description": "A bitter fruit with a bitter heart"
     }
 ]

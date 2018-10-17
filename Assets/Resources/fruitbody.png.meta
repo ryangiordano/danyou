@@ -1,13 +1,10 @@
 fileFormatVersion: 2
-guid: a860b59ae88a7d34c94de54fd07f3cbe
+guid: d191d1918765c0a4796499d5ee201101
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Fruit_0
-    21300002: Fruit_1
-    21300004: Fruit_2
-    21300006: Fruit_3
-    21300008: Fruit_4
-    21300010: Fruit_5
+    21300000: fruitbody_0
+    21300002: fruitbody_1
+    21300004: fruitbody_2
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -48,7 +45,7 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 0
+  spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
@@ -90,13 +87,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Fruit_0
+      name: fruitbody_0
       rect:
         serializedVersion: 2
-        x: 24
-        y: 520
-        width: 208
-        height: 232
+        x: 0
+        y: 256
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -104,19 +101,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1e9ca527c31b53847a7a7d2e63314a6b
+      spriteID: 88101db3f12e7ed48b4a92e3f06f9189
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fruit_1
+      name: fruitbody_1
       rect:
         serializedVersion: 2
-        x: 280
-        y: 520
-        width: 208
-        height: 232
+        x: 256
+        y: 256
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,19 +121,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 16fb003391361ad4090c3eb9ffc91e54
+      spriteID: 7ee8316462e001547b0aa13186f4e99f
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fruit_2
+      name: fruitbody_2
       rect:
         serializedVersion: 2
-        x: 24
-        y: 264
-        width: 208
-        height: 232
+        x: 0
+        y: 0
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -144,67 +141,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fe44a0bd01b3c8a4b8f22a5bcd9bab06
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Fruit_3
-      rect:
-        serializedVersion: 2
-        x: 280
-        y: 264
-        width: 208
-        height: 208
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: df324f90e53ad7a44b20037e6da6934c
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Fruit_4
-      rect:
-        serializedVersion: 2
-        x: 24
-        y: 8
-        width: 208
-        height: 208
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6605f1d7689370f42b31deb602101c03
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Fruit_5
-      rect:
-        serializedVersion: 2
-        x: 280
-        y: 8
-        width: 208
-        height: 208
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7c08895cc59530c41bee5f07e57248fe
+      spriteID: 2ef2450a9d68e534fa79836f3d385ddf
       vertices: []
       indices: 
       edges: []
@@ -212,7 +149,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 642ea4769daab9d45a3b27850a4921cb
+    spriteID: 1e8e7e2a4113c4e43b9aa18b22ea757e
     vertices: []
     indices: 
     edges: []
