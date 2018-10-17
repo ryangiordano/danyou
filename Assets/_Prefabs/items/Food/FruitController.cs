@@ -14,7 +14,6 @@ public class FruitController : CustomMonoBehaviour
     private FlushBehavior _FlushBehavior;
     public bool Hanging = false;
     public bool Collected;
-    private Timer _Timer;
     public int UntilRipe = 10;
     public int Ripeness = 0;
     public float Potency;
@@ -35,22 +34,20 @@ public class FruitController : CustomMonoBehaviour
 
         // _Animator.Play("idle");
         _GameManager = FindComponentByObjectTag<GameManager>("GameController");
-        _Timer = _GameManager.GetComponent<Timer>();
+        EventManager.StartListening("Tick", () =>
+         {
+             Ripeness++;
+             if (Ripeness == UntilRipe / 2)
+             {
+                 _Transform.localScale = new Vector3(1.5f, 1.5f, 1);
+             }
+             if (Ripeness >= UntilRipe)
+             {
+                 _Transform.localScale = new Vector3(1.5f, 1.5f, 1);
+                 _Rigidbody.bodyType = RigidbodyType2D.Dynamic;
 
-        _Timer.Subscribe(() =>
-        {
-            Ripeness++;
-            if (Ripeness == UntilRipe / 2)
-            {
-                _Transform.localScale = new Vector3(1.5f, 1.5f, 1);
-            }
-            if (Ripeness >= UntilRipe)
-            {
-                _Transform.localScale = new Vector3(1.5f, 1.5f, 1);
-                _Rigidbody.bodyType = RigidbodyType2D.Dynamic;
-
-            }
-        });
+             }
+         });
 
 
     }

@@ -11,7 +11,6 @@ namespace Tamagotchi.Assets._Prefabs
         public GameManager _GameManager;
         public TamagotchiModel _Tamagotchi;
         public GameObject Poop;
-        private Timer _Timer;
         private Animator _Animator;
 
         public void Start()
@@ -21,11 +20,10 @@ namespace Tamagotchi.Assets._Prefabs
             _Tamagotchi.LastTick = DateTime.Now;
             _GameManager = FindComponentByObjectTag<GameManager>("GameController");
 
-            _Timer = _GameManager.GetComponent<Timer>();
 
             _Animator = GetComponent<Animator>();
 
-            _Timer.Subscribe(ProcessTick);
+            EventManager.StartListening("Tick", ProcessTick);
 
 
         }

@@ -10,7 +10,6 @@ public class PoopController : CustomMonoBehaviour
     private Walkable _Walkable;
     private FlushBehavior _FlushBehavior;
     public GameManager _GameManager;
-    public Timer _Timer;
     public bool Flushed;
     // Use this for initialization
     void Start()
@@ -19,7 +18,6 @@ public class PoopController : CustomMonoBehaviour
         _Animator = GetComponent<Animator>();
         _FlushBehavior = _Animator.GetBehaviour<FlushBehavior>();
         _GameManager = FindComponentByObjectTag<GameManager>("GameController");
-        _Timer = _GameManager.GetComponent<Timer>();
     }
     private void OnMouseDown()
     {

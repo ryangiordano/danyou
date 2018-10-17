@@ -14,7 +14,6 @@ public class TreeNodeController : CustomMonoBehaviour
 
     public int CurrentStage;
     public int NumStages;
-    private Timer _Timer;
     public GameObject Fruit;
     public float ProgressionCurve;
     public DateTime LastTick { get; set; }
@@ -29,14 +28,13 @@ public class TreeNodeController : CustomMonoBehaviour
     {
         LastTick = DateTime.Now;
         _GameManager = FindComponentByObjectTag<GameManager>("GameController");
-        _Timer = _GameManager.GetComponent<Timer>();
 
         _ProgressManager = new ProgressManager(NumStages, 10);
         if (CurrentStage > 1)
         {
             CurrentExp = _ProgressManager.GetNodeAtStage(CurrentStage - 1).ExpToNext;
         }
-        _Timer.Subscribe(() =>
+        EventManager.StartListening("Tick", () =>
         {
             Debug.Log(CurrentStage);
             ProcessMoment();

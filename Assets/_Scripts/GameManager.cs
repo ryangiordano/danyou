@@ -26,8 +26,10 @@ public class GameManager : CustomMonoBehaviour
         DontDestroyOnLoad(gameObject);
         _BagController = FindComponentByObjectTag<BagController>("BagController");
         _Timer = GetComponent<Timer>();
+        _EventManager = GetComponent<EventManager>();
         _TamagotchiController = _TamagotchiController.GetComponent<TamagotchiController>();
         Physics2D.IgnoreLayerCollision(8, 9);
+
     }
 
     // Update is called once per frame
