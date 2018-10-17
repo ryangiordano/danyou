@@ -6,7 +6,7 @@ using Tamagotchi.Assets.Utility;
 using Tamagotchi.Assets.Utility.Stage;
 using UnityEngine;
 
-public class TreeNodeController : MonoBehaviour
+public class TreeNodeController : CustomMonoBehaviour
 {
     public List<GameObject> Trees;
     private TreeModel _Tree;
@@ -20,6 +20,7 @@ public class TreeNodeController : MonoBehaviour
     public DateTime LastTick { get; set; }
     public int Experience { get; set; }
     public bool IsWatered { get; set; }
+    public GameManager _GameManager;
     public List<Point> History { get; set; }
     private ProgressManager _ProgressManager { get; set; }
 
@@ -27,21 +28,21 @@ public class TreeNodeController : MonoBehaviour
     void Start()
     {
         LastTick = DateTime.Now;
-        // _Tree = new TreeModel(CurrentStage, CurrentExp, NumStages);
-        _Timer = new Timer(LastTick);
+        _GameManager = FindComponentByObjectTag<GameManager>("GameController");
+        _Timer = _GameManager.GetComponent<Timer>();
 
         _ProgressManager = new ProgressManager(NumStages, 10);
         if (CurrentStage > 1)
         {
             CurrentExp = _ProgressManager.GetNodeAtStage(CurrentStage - 1).ExpToNext;
         }
-        StartCoroutine(_Timer.CheckForTick(() =>
+        _Timer.Subscribe(() =>
         {
             Debug.Log(CurrentStage);
             ProcessMoment();
             SetActiveStage();
             SpawnFruit();
-        }));
+        });
 
         SetActiveStage();
     }

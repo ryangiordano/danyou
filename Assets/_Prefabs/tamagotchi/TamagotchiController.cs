@@ -6,7 +6,7 @@ using System.Collections;
 
 namespace Tamagotchi.Assets._Prefabs
 {
-    public class TamagotchiController : MonoBehaviour
+    public class TamagotchiController : CustomMonoBehaviour
     {
         public GameManager _GameManager;
         public TamagotchiModel _Tamagotchi;
@@ -16,16 +16,16 @@ namespace Tamagotchi.Assets._Prefabs
 
         public void Start()
         {
-            // var savedData = this.GetSavedData();
-
             _Tamagotchi = TamagotchiModel.LoadTamagotchi();
 
             _Tamagotchi.LastTick = DateTime.Now;
-            _Timer = new Timer(_Tamagotchi.LastTick);
+            _GameManager = FindComponentByObjectTag<GameManager>("GameController");
+
+            _Timer = _GameManager.GetComponent<Timer>();
 
             _Animator = GetComponent<Animator>();
-        
-            StartCoroutine(_Timer.CheckForTick(ProcessTick));
+
+            _Timer.Subscribe(ProcessTick);
 
 
         }
@@ -33,13 +33,16 @@ namespace Tamagotchi.Assets._Prefabs
         {
             UpdateTamagotchiMood();
         }
-        public void Feed()
+        public void Feed(GameObject item)
         {
+            var itemController = item.GetComponent<FruitController>();
+            var potency = itemController.Potency;
+            // var flavor = itemController.Flavor;
             if (_Tamagotchi.CurrentHunger == 0)
             {
                 return;
             }
-            _Tamagotchi.ChangeHungerBy(-20);
+            _Tamagotchi.ChangeHungerBy(Mathf.RoundToInt(-20 * potency));
             _Tamagotchi.HasBeenFed = true;
             //placeholder value
             if (_Tamagotchi.Satisfaction == _Tamagotchi.MaxSatisfaction)

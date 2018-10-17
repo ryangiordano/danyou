@@ -2,25 +2,35 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Tamagotchi.Assets.Utility
 {
-    public class Timer
+    public class Timer : MonoBehaviour
     {
         public DateTime CurrentTime { get; set; }
         public DateTime TimeSinceLastTick { get; set; }
         public int TimeUntilNextTick { get; set; }
+        public UnityEvent Tick;
         public int TimeBetweenTicks = 2; // Each tick is 30 minutes { get; set; }
         private List<ITimeable> Timeables = new List<ITimeable>();
-        public Timer(DateTime timeSinceLastTick)
+        public void Start()
         {
-            TimeSinceLastTick = timeSinceLastTick;
+            Tick = new UnityEvent();
+            StartCoroutine(CheckForTick());
+
         }
-        public IEnumerator CheckForTick(Action callback)
+        public void Subscribe(UnityAction listener)
+        {
+            Tick.AddListener(listener);
+        }
+        public IEnumerator CheckForTick()
         {
             yield return new WaitForSeconds(TimeBetweenTicks);
-            callback();
-            yield return CheckForTick(callback);
+            Tick.Invoke();
+            yield return CheckForTick();
         }
     }
 }
+
+

@@ -1,21 +1,16 @@
+using System;
+
 namespace Tamagotchi.Assets._Prefabs.items
 {
+    [Serializable]
     public class Item
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public string Description { get; set; }
-        public int Quantity { get; set; }
-        public void ChangeQuantityBy(int change)
-        {
-            if (change > 0 || (this.Quantity - change >= 0))
-            {
-                this.Quantity += change;
-            }
-        }
-        public void IncreaseQuantity()
-        {
-
-        }
+        public int id;
+        public string name;
+        public string description;
+        public int potency;
+        public int untilRipe;
+        public string sprite;
+        public string flavor;
     }
 }

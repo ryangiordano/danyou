@@ -1,0 +1,19 @@
+[{
+        "id": 0,
+        "name": "Orange",
+        "sprite": "Fruit_3",
+        "untilRipe": 10,
+        "flavor": "sweet",
+        "potency": 5,
+        "description": "Orange of the color orange."
+    },
+    {
+        "id": 1,
+        "name": "Apple",
+        "sprite": "Fruit_0",
+        "untilRipe": 10,
+        "flavor": "sour",
+        "potency": 5,
+        "description": "An apple a day keeps the doctor away."
+    }
+]

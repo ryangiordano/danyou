@@ -2,13 +2,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using Tamagotchi.Assets._Prefabs;
+using Tamagotchi.Assets._Prefabs.items.Bag;
 using Tamagotchi.Assets._Scripts;
 using Tamagotchi.Assets.Utility;
 using UnityEngine;
 using UnityEngine.UI;
 
 
-public class GameManager : MonoBehaviour
+public class GameManager : CustomMonoBehaviour
 {
     public TamagotchiController _TamagotchiController;
     public PlayerController Player;
@@ -16,10 +17,15 @@ public class GameManager : MonoBehaviour
     public Text HungerText;
     public Text HappinessText;
     private DataManager _DataManager;
+    public Timer _Timer;
+    public BagController _BagController;
+    public EventManager _EventManager;
     // Use this for initialization
     void Start()
     {
-        _DataManager = new DataManager();
+        DontDestroyOnLoad(gameObject);
+        _BagController = FindComponentByObjectTag<BagController>("BagController");
+        _Timer = GetComponent<Timer>();
         _TamagotchiController = _TamagotchiController.GetComponent<TamagotchiController>();
         Physics2D.IgnoreLayerCollision(8, 9);
     }
@@ -41,9 +47,16 @@ public class GameManager : MonoBehaviour
         SatisfactionText.text = _TamagotchiController._Tamagotchi.Satisfaction.ToString();
 
     }
-    public void FeedTamagotchi()
+    public void FeedTamagotchi(GameObject item)
     {
-        _TamagotchiController.Feed();
+        _TamagotchiController.Feed(item);
         UpdateValues();
+    }
+    public void AddToBag(int id){
+        _BagController.AddItem(id);
+    }
+    public void OpenBag()
+    {
+        EventManager.TriggerEvent("OpenBag");
     }
 }

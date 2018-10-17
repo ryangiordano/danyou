@@ -174,7 +174,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1380356110210126
 GameObject:
   m_ObjectHideFlags: 0
@@ -190,7 +190,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1386217665143386
 GameObject:
   m_ObjectHideFlags: 1
@@ -914,7 +914,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.1, y: 0.1}
   m_EdgeRadius: 0
 --- !u!61 &61183044751099674
 BoxCollider2D:
@@ -939,7 +939,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.1, y: 0.1}
   m_EdgeRadius: 0
 --- !u!61 &61220008612781450
 BoxCollider2D:
@@ -964,7 +964,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.1, y: 0.1}
   m_EdgeRadius: 0
 --- !u!61 &61702389367275380
 BoxCollider2D:
@@ -989,7 +989,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.1, y: 0.1}
   m_EdgeRadius: 0
 --- !u!61 &61772893488182818
 BoxCollider2D:
@@ -1014,7 +1014,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.1, y: 0.1}
   m_EdgeRadius: 0
 --- !u!61 &61888823649325584
 BoxCollider2D:
@@ -1039,7 +1039,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.1, y: 0.1}
   m_EdgeRadius: 0
 --- !u!114 &114072017574032616
 MonoBehaviour:
@@ -1090,20 +1090,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15a7dab1aa37689498b22fa8f0c14709, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Tree_1: {fileID: 1349113197625932}
-  Tree_2: {fileID: 1228425621280802}
-  Tree_3: {fileID: 1372616992380644}
-  Tree_4: {fileID: 1380356110210126}
   Trees:
   - {fileID: 1349113197625932}
   - {fileID: 1228425621280802}
   - {fileID: 1372616992380644}
   - {fileID: 1380356110210126}
   CurrentExp: 0
-  CurrentStage: 1
+  CurrentStage: 2
   NumStages: 4
   Fruit: {fileID: 1485771676043062, guid: ed8f86778f956034ab74ee653637e253, type: 2}
   ProgressionCurve: 10
+  _GameManager: {fileID: 0}
 --- !u!114 &114603766743485772
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -9,6 +9,8 @@ TagManager:
   - Poop
   - Food
   - Spawn
+  - BagController
+  - ItemRepository
   layers:
   - Default
   - TransparentFX

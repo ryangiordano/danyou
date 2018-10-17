@@ -4,37 +4,55 @@ using System.Collections.Generic;
 using Tamagotchi.Assets.Utility;
 using UnityEngine;
 
-public class FruitController : MonoBehaviour
+public class FruitController : CustomMonoBehaviour
 {
 
     public GameManager _GameManager;
+    public Transform _Transform;
+    public Rigidbody2D _Rigidbody;
     private Animator _Animator;
     private FlushBehavior _FlushBehavior;
     public bool Hanging = false;
     public bool Collected;
     private Timer _Timer;
+    public int UntilRipe = 10;
+    public int Ripeness = 0;
+    public float Potency;
+    public String Flavor;
+
     private DateTime LastTick = DateTime.Now;
+    public int Id;
     // Use this for initialization
     void Start()
     {
         _Animator = GetComponent<Animator>();
         _Animator.Play("popin");
         _FlushBehavior = _Animator.GetBehaviour<FlushBehavior>();
-        _Timer = new Timer(LastTick);
-        // _Animator.Play("idle");
-        GameObject gameManagerObject = GameObject.FindWithTag("GameController");
-        StartCoroutine(_Timer.CheckForTick(()=>{
-            print("Fruit");
-        }));
+        _Rigidbody = GetComponent<Rigidbody2D>();
+        _Transform = GetComponent<Transform>();
 
-        if (gameManagerObject != null)
+        _Rigidbody.bodyType = RigidbodyType2D.Static;
+
+        // _Animator.Play("idle");
+        _GameManager = FindComponentByObjectTag<GameManager>("GameController");
+        _Timer = _GameManager.GetComponent<Timer>();
+
+        _Timer.Subscribe(() =>
         {
-            _GameManager = gameManagerObject.GetComponent<GameManager>();
-        }
-        if (_GameManager == null)
-        {
-            Debug.Log("Game manager not found.");
-        }
+            Ripeness++;
+            if (Ripeness == UntilRipe / 2)
+            {
+                _Transform.localScale = new Vector3(1.5f, 1.5f, 1);
+            }
+            if (Ripeness >= UntilRipe)
+            {
+                _Transform.localScale = new Vector3(1.5f, 1.5f, 1);
+                _Rigidbody.bodyType = RigidbodyType2D.Dynamic;
+
+            }
+        });
+
+
     }
     public void CollectFruit()
     {
@@ -43,11 +61,14 @@ public class FruitController : MonoBehaviour
     }
     private void OnMouseDown()
     {
-        // _GameMananger.AddToBag();
-        _GameManager.FeedTamagotchi();
+        _GameManager.AddToBag(Id);
+        // _GameManager.FeedTamagotchi();
+
         _Animator.SetTrigger("PoppedOut");
     }
-
+    private void OnDestroy()
+    {
+    }
     // Update is called once per frame
     void Update()
     {
