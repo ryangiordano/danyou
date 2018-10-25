@@ -21,6 +21,6 @@ public class MenuController : MonoBehaviour
     }
     public void ToggleMenu(int menuId)
     {
-        Menus.ForEach(m => m.SetActive(m.GetComponent<ToggleMenu>().MenuId == menuId));
+        Menus.ForEach(m => m.SetActive(m.active ? !m.active : m.GetComponent<ToggleMenu>().MenuId == menuId));
     }
 }
