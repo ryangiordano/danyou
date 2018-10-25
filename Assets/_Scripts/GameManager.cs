@@ -14,10 +14,6 @@ public class GameManager : CustomMonoBehaviour
 {
     public TamagotchiController _TamagotchiController;
     public PlayerController Player;
-    public Text SatisfactionText;
-    public Text HungerText;
-    public Text HappinessText;
-    private DataManager _DataManager;
     public Timer _Timer;
     public BagController _BagController;
     public EventManager _EventManager;
@@ -37,28 +33,12 @@ public class GameManager : CustomMonoBehaviour
     {
 
     }
-    public void PetTamagotchi()
-    {
-        _TamagotchiController.Pet();
-        UpdateValues();
-    }
-    public void UpdateValues()
-    {
-        HappinessText.text = _TamagotchiController._Tamagotchi.CurrentHappiness.ToString();
-        HungerText.text = _TamagotchiController._Tamagotchi.CurrentHunger.ToString();
-        SatisfactionText.text = _TamagotchiController._Tamagotchi.Satisfaction.ToString();
-
-    }
     public void FeedTamagotchi(Item item)
     {
         _TamagotchiController.Feed(item);
-        UpdateValues();
     }
     public void AddToBag(int id){
         _BagController.AddItem(id);
     }
-    public void ToggleBag()
-    {
-        EventManager.TriggerEvent("ToggleBag");
-    }
+
 }

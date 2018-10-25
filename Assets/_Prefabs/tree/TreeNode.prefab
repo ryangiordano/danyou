@@ -1096,11 +1096,12 @@ MonoBehaviour:
   - {fileID: 1372616992380644}
   - {fileID: 1380356110210126}
   CurrentExp: 0
-  CurrentStage: 2
+  CurrentStage: 1
   NumStages: 4
   Fruit: {fileID: 1485771676043062, guid: ed8f86778f956034ab74ee653637e253, type: 2}
   ProgressionCurve: 10
   _GameManager: {fileID: 0}
+  FruitTypes: 
 --- !u!114 &114603766743485772
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -4,15 +4,21 @@ namespace Tamagotchi.Assets._Prefabs.items
     {
         Apple = 0,
         Orange = 1,
-        Banana = 2
+        Youzi = 2,
+        Lemon = 3,
+        Banana = 4,
+        Grapes = 5,
+        Plum = 6,
+        Apricot = 7,
+
 
     }
-    public class Fruit : Item
-    {
-        public FruitType Type { get; set; }
-        public Fruit()
-        {
-            
-        }
+    public enum Flavor{
+        Sour = 0,
+        Sweet = 1,
+        Bitter = 2,
+        Spicy = 3,
+        Salty = 4,
+        Bland = 5
     }
 }

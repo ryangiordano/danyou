@@ -30,10 +30,4 @@ public class ItemChoice : MonoBehaviour, IPointerDownHandler
     {
         _BagController.UseItem(Id);
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 }

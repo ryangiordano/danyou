@@ -12,6 +12,7 @@ TagManager:
   - BagController
   - ItemRepository
   - Bag
+  - Status
   layers:
   - Default
   - TransparentFX
@@ -25,7 +26,7 @@ TagManager:
   - Items
   - Background
   - Backdrop
-  - 
+  - Trees
   - 
   - 
   - 
@@ -63,4 +64,7 @@ TagManager:
     locked: 0
   - name: Items
     uniqueID: 1710606859
+    locked: 0
+  - name: Tree
+    uniqueID: 2982910715
     locked: 0

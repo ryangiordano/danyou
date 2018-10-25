@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Tamagotchi.Assets._Prefabs.items;
 using Tamagotchi.Assets._Prefabs.tree;
 using Tamagotchi.Assets.Utility;
 using Tamagotchi.Assets.Utility.Stage;
@@ -20,12 +21,17 @@ public class TreeNodeController : CustomMonoBehaviour
     public int Experience { get; set; }
     public bool IsWatered { get; set; }
     public GameManager _GameManager;
+    public FruitType FruitType;
+    public Flavor FruitFlavor;
     public List<Point> History { get; set; }
     private ProgressManager _ProgressManager { get; set; }
 
     // Use this for initialization
     void Start()
     {
+        //Set the type of fruit that this tree will bear
+        Fruit.GetComponent<FruitController>().Flavor = FruitFlavor;
+        Fruit.GetComponent<FruitController>().FruitType = FruitType;
         LastTick = DateTime.Now;
         _GameManager = FindComponentByObjectTag<GameManager>("GameController");
 

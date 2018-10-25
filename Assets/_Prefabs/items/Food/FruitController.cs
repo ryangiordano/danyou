@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Tamagotchi.Assets._Prefabs.items;
 using Tamagotchi.Assets.Utility;
 using UnityEngine;
 
@@ -19,7 +20,8 @@ public class FruitController : CustomMonoBehaviour
     public int UntilRipe = 10;
     public int Ripeness = 0;
     public float Potency;
-    public String Flavor;
+    public Flavor Flavor;
+    public FruitType FruitType;
 
     private DateTime LastTick = DateTime.Now;
     public int Id;
@@ -31,7 +33,6 @@ public class FruitController : CustomMonoBehaviour
         _FlushBehavior = _Animator.GetBehaviour<FlushBehavior>();
         _Rigidbody = GetComponent<Rigidbody2D>();
         _Transform = GetComponent<Transform>();
-
         _Rigidbody.bodyType = RigidbodyType2D.Static;
 
         // _Animator.Play("idle");
@@ -46,7 +47,7 @@ public class FruitController : CustomMonoBehaviour
              if (Ripeness >= UntilRipe)
              {
                  _Transform.localScale = new Vector3(1.5f, 1.5f, 1);
-                 _Rigidbody.bodyType = RigidbodyType2D.Dynamic;
+                //  _Rigidbody.bodyType = RigidbodyType2D.Dynamic;
 
              }
          });

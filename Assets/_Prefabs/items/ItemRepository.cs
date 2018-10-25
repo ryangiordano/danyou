@@ -10,23 +10,49 @@ namespace Tamagotchi.Assets._Prefabs.items
     {
         public List<GameObject> ItemGameObjects;
         public List<Item> Items;
+        public List<Fruit> Fruits;
         public Sprite[] Sprites;
+        private static ItemRepository itemRepository;
+        public static ItemRepository instance
+        {
+            get
+            {
+                if (!itemRepository)
+                {
+                    itemRepository = FindObjectOfType(typeof(ItemRepository)) as ItemRepository;
+
+                    if (!itemRepository)
+                    {
+                        Debug.LogError("There needs to be one active ItemRepository script on a GameObject in your scene.");
+                    }
+                }
+
+                return itemRepository;
+            }
+        }
         private string PathToItems = "_Prefabs/items/Food/";
         private void Start()
         {
             DontDestroyOnLoad(gameObject);
             LoadGameData();
-            string filePath = Path.Combine(Application.dataPath, PathToItems + "fruitbody");
             Sprites = Resources.LoadAll<Sprite>("fruitbody");
-
         }
         public Item GetItemById(int id)
         {
             return Items.Find((i) => i.id == id);
         }
+        public Fruit GetFruitById(int id)
+        {
+            return Fruits.Find((i) => i.id == id);
+
+        }
+        public Fruit GetFruitByTypeFlavor(FruitType type, Flavor flavor)
+        {
+            return Fruits.Find(i => i.flavor == flavor && i.fruitType == type);
+        }
         public Sprite GetSpriteByName(string name)
         {
-            return Array.Find(Sprites, (sprite) =>sprite.name == name);
+            return Array.Find(Sprites, (sprite) => sprite.name == name);
         }
         private void LoadGameData()
         {
@@ -37,7 +63,8 @@ namespace Tamagotchi.Assets._Prefabs.items
             {
                 string dataAsJson = File.ReadAllText(filePath);
                 string newData = JsonHelper.AppendItems(dataAsJson);
-                Items = JsonHelper.FromJson<Item>(newData);
+                Fruits = JsonHelper.FromJson<Fruit>(newData);
+                print(Fruits.Count);
 
             }
             else

@@ -13,6 +13,7 @@ namespace Tamagotchi.Assets._Prefabs.items.Bag
         public Dictionary<int, int> ItemsInBag;
         public GameManager _GameManager;
         public GameObject ItemChoice;
+        public int MenuId;
 
         private void Start()
         {
@@ -49,18 +50,19 @@ namespace Tamagotchi.Assets._Prefabs.items.Bag
         }
         private void UpdateBagContents()
         {
-            foreach (Transform child in transform)
+            var itemWrapper = transform.Find("ItemWrapper");
+            foreach (Transform child in itemWrapper)
             {
                 Destroy(child.gameObject);
             }
             int i = 0;
             foreach (var item in ItemsInBag)
             {
-                var offset = ItemsInBag.Count == 1 ? 120 : 120 - (i * 35);
-                var itemChoice = Instantiate(ItemChoice, gameObject.transform);
-                itemChoice.GetComponent<Transform>().localPosition = new Vector3(0, offset, 0);
-                var repoItem = _ItemRepository.GetItemById(item.Key);
-                print(item.Key);
+                var offset =(i * 35);
+                var itemChoice = Instantiate(ItemChoice, itemWrapper.transform);
+                itemChoice.GetComponent<RectTransform>().anchoredPosition = new Vector3(0, offset, 0);
+
+                var repoItem = _ItemRepository.GetFruitById(item.Key);
                 var itemController = itemChoice.GetComponent<ItemChoice>();
                 itemController.Name = repoItem.name;
                 itemController.Id = repoItem.id;
@@ -77,7 +79,7 @@ namespace Tamagotchi.Assets._Prefabs.items.Bag
             if (ItemsInBag.ContainsKey(id) && ItemsInBag[id] > 0)
             {
                 ItemsInBag[id]--;
-                var item = _ItemRepository.GetItemById(id);
+                var item = _ItemRepository.GetFruitById(id);
                 _GameManager.FeedTamagotchi(item);
                 if(ItemsInBag[id] == 0){
                     ItemsInBag.Remove(id);

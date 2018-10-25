@@ -9,8 +9,13 @@ namespace Tamagotchi.Assets._Prefabs.items
         public string name;
         public string description;
         public int potency;
-        public int untilRipe;
         public string sprite;
-        public string flavor;
+
+    }
+    [Serializable]
+    public class Fruit: Item {
+        public int untilRipe;
+        public Flavor flavor;
+        public FruitType fruitType;
     }
 }

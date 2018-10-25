@@ -34,6 +34,7 @@ namespace Tamagotchi.Assets._Prefabs
         public void Feed(Item item)
         {
             var potency = item.potency;
+            print(potency);
             // var flavor = itemController.Flavor;
             if (_Tamagotchi.CurrentHunger == 0)
             {
@@ -67,7 +68,7 @@ namespace Tamagotchi.Assets._Prefabs
         }
         private void OnMouseDown()
         {
-            _GameManager.PetTamagotchi();
+            Pet();
         }
         private void ProcessTick()
         {
@@ -76,7 +77,6 @@ namespace Tamagotchi.Assets._Prefabs
                 Instantiate(Poop, transform.position, transform.rotation);
             }
             _Tamagotchi.ProcessMoment();
-            _GameManager.UpdateValues();
         }
 
         private void UpdateTamagotchiMood()

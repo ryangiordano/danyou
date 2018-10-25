@@ -411,7 +411,6 @@
      <Compile Include="Assets\_Plugins\ParadoxNotion\FlowCanvas\Module\TypeConverter.cs" />
      <Compile Include="Assets\_Plugins\ParadoxNotion\FlowCanvas\Module\Wild.cs" />
      <Compile Include="Assets\_Prefabs\boundaries\Inverted2DEdges.cs" />
-     <Compile Include="Assets\_Prefabs\items\Bag\BagController.cs" />
      <Compile Include="Assets\_Prefabs\items\Bag\ItemChoice.cs" />
      <Compile Include="Assets\_Prefabs\items\Food\FruitController.cs" />
      <Compile Include="Assets\_Prefabs\items\Fruit.cs" />
@@ -429,8 +428,13 @@
      <Compile Include="Assets\_Prefabs\tree\TreeNodeController.cs" />
      <Compile Include="Assets\_Scripts\DataManager.cs" />
      <Compile Include="Assets\_Scripts\GameManager.cs" />
+     <Compile Include="Assets\_UI\BagController.cs" />
+     <Compile Include="Assets\_UI\MenuController.cs" />
+     <Compile Include="Assets\_UI\StatusMenuController.cs" />
+     <Compile Include="Assets\_UI\ToggleMenu.cs" />
      <Compile Include="Assets\_UI\TogglePanelButton.cs" />
      <Compile Include="Assets\Utility\CustomMonoBehaviour.cs" />
+     <Compile Include="Assets\Utility\DataController.cs" />
      <Compile Include="Assets\Utility\EventManager.cs" />
      <Compile Include="Assets\Utility\ExtensionMethods\Extension.cs" />
      <Compile Include="Assets\Utility\ITimeable.cs" />
