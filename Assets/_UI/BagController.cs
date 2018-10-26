@@ -13,11 +13,9 @@ namespace Tamagotchi.Assets._Prefabs.items.Bag
         public Dictionary<int, int> ItemsInBag;
         public GameManager _GameManager;
         public GameObject ItemChoice;
-        public int MenuId;
 
         private void Start()
         {
-            gameObject.SetActive(false);
             ItemsInBag = new Dictionary<int, int>();
             // DontDestroyOnLoad(gameObject);
             _ItemRepository = FindComponentByObjectTag<ItemRepository>("ItemRepository");

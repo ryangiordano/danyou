@@ -13,7 +13,6 @@ public class StatusMenuController : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-		gameObject.SetActive(false);
         _TamagotchiController = _TamagotchiController.GetComponent<TamagotchiController>();
     }
 

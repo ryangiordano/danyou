@@ -431,6 +431,7 @@
      <Compile Include="Assets\_UI\BagController.cs" />
      <Compile Include="Assets\_UI\MenuController.cs" />
      <Compile Include="Assets\_UI\StatusMenuController.cs" />
+     <Compile Include="Assets\_UI\ToggleButton.cs" />
      <Compile Include="Assets\_UI\ToggleMenu.cs" />
      <Compile Include="Assets\_UI\TogglePanelButton.cs" />
      <Compile Include="Assets\Utility\CustomMonoBehaviour.cs" />
