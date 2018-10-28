@@ -34,7 +34,7 @@ GameObject:
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4240310510943034}
+  - component: {fileID: 224186578561383688}
   - component: {fileID: 114563742938198342}
   m_Layer: 0
   m_Name: Tree_3
@@ -56,7 +56,7 @@ GameObject:
   - component: {fileID: 61138658716848874}
   m_Layer: 9
   m_Name: FruitSpawn
-  m_TagString: Untagged
+  m_TagString: Spawn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -93,23 +93,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4240310510943034
-Transform:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1425355722612532}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.2, y: -1.33, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 4950053566442730}
-  - {fileID: 4904629443021104}
-  - {fileID: 4508300853044362}
-  - {fileID: 4270288448223058}
-  m_Father: {fileID: 0}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4270288448223058
 Transform:
   m_ObjectHideFlags: 1
@@ -120,7 +103,7 @@ Transform:
   m_LocalPosition: {x: 0.027277946, y: 3.2848344, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 4240310510943034}
+  m_Father: {fileID: 224186578561383688}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4508300853044362
@@ -133,7 +116,7 @@ Transform:
   m_LocalPosition: {x: 0.04, y: 3.14, z: 0}
   m_LocalScale: {x: 0.8, y: 0.8, z: 1}
   m_Children: []
-  m_Father: {fileID: 4240310510943034}
+  m_Father: {fileID: 224186578561383688}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4904629443021104
@@ -146,7 +129,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 4240310510943034}
+  m_Father: {fileID: 224186578561383688}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4950053566442730
@@ -159,7 +142,7 @@ Transform:
   m_LocalPosition: {x: -0.006631851, y: 2.3889043, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 4240310510943034}
+  m_Father: {fileID: 224186578561383688}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &50898225817724072
@@ -221,10 +204,7 @@ MonoBehaviour:
   Fruit: {fileID: 1485771676043062, guid: ed8f86778f956034ab74ee653637e253, type: 2}
   SpawnNodes:
   - {fileID: 1465494674031996}
-  CurrentStage: 3
-  NumStages: 4
-  CurrentExp: 0
-  ProgressionCurve: 10
+  Stage: 3
 --- !u!114 &114831606198726852
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -375,3 +355,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!224 &224186578561383688
+RectTransform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1425355722612532}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 4950053566442730}
+  - {fileID: 4904629443021104}
+  - {fileID: 4508300853044362}
+  - {fileID: 4270288448223058}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}

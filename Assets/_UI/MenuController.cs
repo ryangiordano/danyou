@@ -22,7 +22,6 @@ public class MenuController : MonoBehaviour
     {
         Buttons.ForEach(b =>
         {
-            print("Buttons");
             var toggleButton = b.GetComponent<ToggleButton>();
             if (toggleButton.Open)
             {

@@ -35,7 +35,6 @@ public class FruitController : CustomMonoBehaviour
         _Transform = GetComponent<Transform>();
         _Rigidbody.bodyType = RigidbodyType2D.Static;
 
-        // _Animator.Play("idle");
         _GameManager = FindComponentByObjectTag<GameManager>("GameController");
         EventManager.StartListening("Tick", () =>
          {
@@ -47,12 +46,10 @@ public class FruitController : CustomMonoBehaviour
              if (Ripeness >= UntilRipe)
              {
                  _Transform.localScale = new Vector3(1.5f, 1.5f, 1);
-                //  _Rigidbody.bodyType = RigidbodyType2D.Dynamic;
+                 //  _Rigidbody.bodyType = RigidbodyType2D.Dynamic;
 
              }
          });
-
-
     }
     public void CollectFruit()
     {
@@ -64,18 +61,11 @@ public class FruitController : CustomMonoBehaviour
         _GameManager.AddToBag(Id);
         _Animator.SetTrigger("PoppedOut");
     }
-    private void OnDestroy()
-    {
-    }
-    // Update is called once per frame
     void Update()
     {
         if (_FlushBehavior.Finished && !Collected)
         {
             CollectFruit();
         }
-    }
-    private void OnCollisionEnter2D(Collision2D other)
-    {
     }
 }

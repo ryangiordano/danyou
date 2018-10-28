@@ -15,14 +15,14 @@ public class TreeNodeController : CustomMonoBehaviour
 
     public int CurrentStage;
     public int NumStages;
-    public GameObject Fruit;
+    public GameObject FruitObject;
+    public GameObject FruitClone;
     public float ProgressionCurve;
     public DateTime LastTick { get; set; }
     public int Experience { get; set; }
     public bool IsWatered { get; set; }
     public GameManager _GameManager;
-    public FruitType FruitType;
-    public Flavor FruitFlavor;
+    public int FruitId;
     public List<Point> History { get; set; }
     private ProgressManager _ProgressManager { get; set; }
 
@@ -30,22 +30,19 @@ public class TreeNodeController : CustomMonoBehaviour
     void Start()
     {
         //Set the type of fruit that this tree will bear
-        Fruit.GetComponent<FruitController>().Flavor = FruitFlavor;
-        Fruit.GetComponent<FruitController>().FruitType = FruitType;
+        var clone = Instantiate(FruitObject, ItemRepository.instance.gameObject.transform);
+        FruitClone = Fruit.Create(FruitId, clone);
+
+
         LastTick = DateTime.Now;
         _GameManager = FindComponentByObjectTag<GameManager>("GameController");
 
-        _ProgressManager = new ProgressManager(NumStages, 10);
+        _ProgressManager = new ProgressManager(NumStages, ProgressionCurve);
         if (CurrentStage > 1)
         {
             CurrentExp = _ProgressManager.GetNodeAtStage(CurrentStage - 1).ExpToNext;
         }
-        EventManager.StartListening("Tick", () =>
-        {
-            ProcessMoment();
-            SetActiveStage();
-            SpawnFruit();
-        });
+        EventManager.StartListening("Tick", ProcessMoment);
 
         SetActiveStage();
     }
@@ -56,61 +53,20 @@ public class TreeNodeController : CustomMonoBehaviour
     }
     public void SetActiveStage()
     {
-        Trees.ForEach((tree) =>
+        var currentStage = CurrentStage;
+        var activeTree = Trees[currentStage - 1];
+        foreach (Transform child in transform)
         {
-            var controller = tree.GetComponent<TreeController>();
-            if (controller.Stage == CurrentStage)
-            {
-                tree.SetActive(true);
-            }
-            else
-            {
-                tree.SetActive(false);
-            }
+            Destroy(child.gameObject);
+        }
 
-        });
+        var tree = Instantiate(activeTree, transform, true);
+        tree.GetComponent<RectTransform>().anchoredPosition = new Vector3(0, 0, 0);
 
     }
     public void SpawnFruit()
     {
-
-        switch (CurrentStage)
-        {
-            case 3:
-                var VacantNodes3 = Trees.Find((tree) => tree.GetComponent<TreeController>().Stage == 3)
-                    .GetComponent<TreeController>()
-                    .SpawnNodes
-                    .FindAll((s) => !s.GetComponent<FruitSpawnController>().Occupied);
-
-                FruitSpawnSmall(VacantNodes3, 1);
-                break;
-            case 4:
-                var VacantNodes4 = Trees.Find((tree) => tree.GetComponent<TreeController>().Stage == 4)
-                    .GetComponent<TreeController>()
-                    .SpawnNodes
-                    .FindAll((s) => !s.GetComponent<FruitSpawnController>().Occupied);
-
-                FruitSpawnSmall(VacantNodes4, 2);
-                break;
-        }
-    }
-    private void FruitSpawnSmall(List<GameObject> vacantNodes, int toSpawn)
-    {
-        for (int i = 0; i < toSpawn; i++)
-        {
-            if (vacantNodes.Count >= 1)
-            {
-                var randIdx = UnityEngine.Random.Range(0, vacantNodes.Count);
-                var randomNode = vacantNodes[randIdx];
-                var instantiated = Instantiate(Fruit, randomNode.transform.position, randomNode.transform.rotation);
-                instantiated.transform.localScale = new Vector3(.5f, .5f, 0);
-                var rb = instantiated.GetComponent<Rigidbody2D>();
-                rb.isKinematic = true;
-                vacantNodes.RemoveAt(randIdx);
-            }
-        }
-
-
+        transform.GetChild(0).GetComponent<TreeController>().TriggerSpawn(FruitClone, 2);
     }
     public void ProcessMoment()
     {
@@ -124,7 +80,7 @@ public class TreeNodeController : CustomMonoBehaviour
                 LevelUp();
             }
         }
-
+        SpawnFruit();
         IsWatered = false;
     }
     public void RecordHistory()
@@ -144,6 +100,7 @@ public class TreeNodeController : CustomMonoBehaviour
     {
         CurrentExp = _ProgressManager.GetNodeAtStage(CurrentStage).ExpToNext;
         CurrentStage = CurrentStage + 1 > NumStages ? CurrentStage : CurrentStage + 1;
+        SetActiveStage();
     }
 
     public void WaterTree()

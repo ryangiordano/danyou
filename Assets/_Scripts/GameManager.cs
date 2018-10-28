@@ -15,7 +15,7 @@ public class GameManager : CustomMonoBehaviour
     public TamagotchiController _TamagotchiController;
     public PlayerController Player;
     public Timer _Timer;
-    public BagController _BagController;
+    public InventoryController _InventoryController;
     public EventManager _EventManager;
     // Use this for initialization
     void Start()
@@ -23,6 +23,7 @@ public class GameManager : CustomMonoBehaviour
         DontDestroyOnLoad(gameObject);
         _Timer = GetComponent<Timer>();
         _EventManager = GetComponent<EventManager>();
+        _InventoryController = FindComponentByObjectTag<InventoryController>("Inventory");
         _TamagotchiController = _TamagotchiController.GetComponent<TamagotchiController>();
         Physics2D.IgnoreLayerCollision(8, 9);
 
@@ -31,14 +32,14 @@ public class GameManager : CustomMonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
     }
     public void FeedTamagotchi(Item item)
     {
         _TamagotchiController.Feed(item);
     }
-    public void AddToBag(int id){
-        _BagController.AddItem(id);
+    public void AddToBag(int id)
+    {
+        _InventoryController.AddItem(id);
     }
 
 }

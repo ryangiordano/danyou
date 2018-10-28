@@ -21,9 +21,7 @@ public class ToggleButton : MonoBehaviour
     }
     public void CloseMenu()
     {
-        print("Close!");
         _Image.sprite = _Sprites[0];
-
         Color c = _Image.color;
         c.a = DisabledAlpha;
         _Image.color = c;
@@ -31,8 +29,6 @@ public class ToggleButton : MonoBehaviour
     }
     public void OpenMenu()
     {
-        print("Open!");
-
         _Image.sprite = _Sprites[1];
         Color c = _Image.color;
         c.a = EnabledAlpha;

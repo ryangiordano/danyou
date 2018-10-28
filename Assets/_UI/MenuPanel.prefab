@@ -271,9 +271,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e828793eabaad35468aa8e6d0c68130b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NameText: {fileID: 0}
-  CountText: {fileID: 0}
-  ItemImage: {fileID: 0}
+  NameText: {fileID: 114037861014451342}
+  CountText: {fileID: 114278034415667964}
+  ItemImage: {fileID: 114456717918566804}
 --- !u!114 &114278034415667964
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -346,7 +346,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.9433962, g: 0.6719473, b: 0.6719473, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -372,8 +372,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 013edfdb65049774a99e51662cf3c51e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _GameManager: {fileID: 0}
   ItemChoice: {fileID: 1830023141139438, guid: 8cf399669fb2df4498f844a178d68298, type: 2}
+  _InventoryController: {fileID: 0}
 --- !u!114 &114800707348124048
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -518,7 +518,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -67.1}
+  m_AnchoredPosition: {x: 0, y: -79.5}
   m_SizeDelta: {x: 185, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224718639990186942

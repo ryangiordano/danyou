@@ -34,7 +34,6 @@ namespace Tamagotchi.Assets._Prefabs
         public void Feed(Item item)
         {
             var potency = item.potency;
-            print(potency);
             // var flavor = itemController.Flavor;
             if (_Tamagotchi.CurrentHunger == 0)
             {

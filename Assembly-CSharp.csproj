@@ -428,8 +428,11 @@
      <Compile Include="Assets\_Prefabs\tree\TreeNodeController.cs" />
      <Compile Include="Assets\_Scripts\DataManager.cs" />
      <Compile Include="Assets\_Scripts\GameManager.cs" />
+     <Compile Include="Assets\_Scripts\PlayScene.cs" />
      <Compile Include="Assets\_UI\BagController.cs" />
+     <Compile Include="Assets\_UI\InventoryController.cs" />
      <Compile Include="Assets\_UI\MenuController.cs" />
+     <Compile Include="Assets\_UI\SceneNavigator.cs" />
      <Compile Include="Assets\_UI\StatusMenuController.cs" />
      <Compile Include="Assets\_UI\ToggleButton.cs" />
      <Compile Include="Assets\_UI\ToggleMenu.cs" />
@@ -440,6 +443,7 @@
      <Compile Include="Assets\Utility\ExtensionMethods\Extension.cs" />
      <Compile Include="Assets\Utility\ITimeable.cs" />
      <Compile Include="Assets\Utility\JsonHelper.cs" />
+     <Compile Include="Assets\Utility\LoadingManager.cs" />
      <Compile Include="Assets\Utility\Stage\ProgressManager.cs" />
      <Compile Include="Assets\Utility\Timer.cs" />
      <Compile Include="Assets\Utility\Walkable.cs" />

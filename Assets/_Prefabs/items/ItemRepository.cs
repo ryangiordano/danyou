@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Threading;
 using Tamagotchi.Assets.Utility;
 using UnityEngine;
 
@@ -12,6 +13,8 @@ namespace Tamagotchi.Assets._Prefabs.items
         public List<Item> Items;
         public List<Fruit> Fruits;
         public Sprite[] Sprites;
+        private string PathToItems = "_Prefabs/items/Food/";
+
         private static ItemRepository itemRepository;
         public static ItemRepository instance
         {
@@ -30,12 +33,10 @@ namespace Tamagotchi.Assets._Prefabs.items
                 return itemRepository;
             }
         }
-        private string PathToItems = "_Prefabs/items/Food/";
         private void Start()
         {
             DontDestroyOnLoad(gameObject);
             LoadGameData();
-            Sprites = Resources.LoadAll<Sprite>("fruitbody");
         }
         public Item GetItemById(int id)
         {
@@ -44,7 +45,6 @@ namespace Tamagotchi.Assets._Prefabs.items
         public Fruit GetFruitById(int id)
         {
             return Fruits.Find((i) => i.id == id);
-
         }
         public Fruit GetFruitByTypeFlavor(FruitType type, Flavor flavor)
         {
@@ -64,8 +64,9 @@ namespace Tamagotchi.Assets._Prefabs.items
                 string dataAsJson = File.ReadAllText(filePath);
                 string newData = JsonHelper.AppendItems(dataAsJson);
                 Fruits = JsonHelper.FromJson<Fruit>(newData);
-                print(Fruits.Count);
+                Sprites = Resources.LoadAll<Sprite>("fruitbody");
 
+                EventManager.TriggerEvent("GameLoaded");
             }
             else
             {

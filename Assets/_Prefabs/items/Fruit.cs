@@ -1,3 +1,5 @@
+using UnityEngine;
+
 namespace Tamagotchi.Assets._Prefabs.items
 {
     public enum FruitType
@@ -13,7 +15,8 @@ namespace Tamagotchi.Assets._Prefabs.items
 
 
     }
-    public enum Flavor{
+    public enum Flavor
+    {
         Sour = 0,
         Sweet = 1,
         Bitter = 2,
