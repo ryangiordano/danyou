@@ -20,4 +20,10 @@ class EditorScrips : EditorWindow
         EditorSceneManager.SaveOpenScenes();
         EditorSceneManager.OpenScene("Assets/_Scenes/Main.unity");
     }
+        [MenuItem("Play/PlayMe _%l")]
+    public static void GoToOrchard()
+    {
+        EditorSceneManager.SaveOpenScenes();
+        EditorSceneManager.OpenScene("Assets/_Scenes/Orchard.unity");
+    }
 }

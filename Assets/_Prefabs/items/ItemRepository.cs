@@ -7,14 +7,12 @@ using UnityEngine;
 
 namespace Tamagotchi.Assets._Prefabs.items
 {
-    public class ItemRepository : CustomMonoBehaviour
+    public class ItemRepository : MonoBehaviour
     {
         public List<GameObject> ItemGameObjects;
         public List<Item> Items;
         public List<Fruit> Fruits;
         public Sprite[] Sprites;
-        private string PathToItems = "_Prefabs/items/Food/";
-
         private static ItemRepository itemRepository;
         public static ItemRepository instance
         {

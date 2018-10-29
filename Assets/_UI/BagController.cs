@@ -1,12 +1,13 @@
 using System;
 using System.Collections.Generic;
 using Tamagotchi.Assets.Utility;
+using Tamagotchi.Assets.Utility.ExtensionMethods;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace Tamagotchi.Assets._Prefabs.items.Bag
 {
-    public class BagController : CustomMonoBehaviour
+    public class BagController : MonoBehaviour
     {
         // A bag should contain a reference to the player, the item repository, and the active character object in the scene.
         private ItemRepository _ItemRepository;
@@ -16,8 +17,8 @@ namespace Tamagotchi.Assets._Prefabs.items.Bag
 
         private void Start()
         {
-            _InventoryController = FindComponentByObjectTag<InventoryController>("Inventory");
-            _ItemRepository = FindComponentByObjectTag<ItemRepository>("ItemRepository");
+            _InventoryController = this.FindComponentByObjectTag<InventoryController>("Inventory");
+            _ItemRepository = this.FindComponentByObjectTag<ItemRepository>("ItemRepository");
             EventManager.StartListening("BagUpdated", UpdateBagContents);
             UpdateBagContents();
 

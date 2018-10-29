@@ -6,7 +6,7 @@ using UnityEngine.Events;
 
 namespace Tamagotchi.Assets.Utility
 {
-    public class Timer : CustomMonoBehaviour
+    public class Timer : MonoBehaviour
     {
         public DateTime CurrentTime { get; set; }
         public DateTime TimeSinceLastTick { get; set; }

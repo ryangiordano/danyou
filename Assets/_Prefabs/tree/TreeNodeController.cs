@@ -4,10 +4,11 @@ using System.Collections.Generic;
 using Tamagotchi.Assets._Prefabs.items;
 using Tamagotchi.Assets._Prefabs.tree;
 using Tamagotchi.Assets.Utility;
+using Tamagotchi.Assets.Utility.ExtensionMethods;
 using Tamagotchi.Assets.Utility.Stage;
 using UnityEngine;
 
-public class TreeNodeController : CustomMonoBehaviour
+public class TreeNodeController : MonoBehaviour
 {
     public List<GameObject> Trees;
     private TreeModel _Tree;
@@ -35,7 +36,7 @@ public class TreeNodeController : CustomMonoBehaviour
 
 
         LastTick = DateTime.Now;
-        _GameManager = FindComponentByObjectTag<GameManager>("GameController");
+        _GameManager = GameManager.Instance.GetComponent<GameManager>();;
 
         _ProgressManager = new ProgressManager(NumStages, ProgressionCurve);
         if (CurrentStage > 1)

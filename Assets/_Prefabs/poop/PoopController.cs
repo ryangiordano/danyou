@@ -1,23 +1,22 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using Tamagotchi.Assets.Utility;
+using Tamagotchi.Assets.Utility.ExtensionMethods;
 using UnityEngine;
 
-public class PoopController : CustomMonoBehaviour
+public class PoopController : MonoBehaviour
 {
 
     private Animator _Animator;
-    private Walkable _Walkable;
     private FlushBehavior _FlushBehavior;
     public GameManager _GameManager;
     public bool Flushed;
     // Use this for initialization
     void Start()
     {
-        _Walkable = GetComponent<Walkable>();
         _Animator = GetComponent<Animator>();
         _FlushBehavior = _Animator.GetBehaviour<FlushBehavior>();
-        _GameManager = FindComponentByObjectTag<GameManager>("GameController");
+        _GameManager = GameManager.Instance.GetComponent<GameManager>();;
     }
     private void OnMouseDown()
     {

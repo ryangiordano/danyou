@@ -2,37 +2,22 @@
 using System.Collections.Generic;
 using Tamagotchi.Assets._Prefabs.items;
 using Tamagotchi.Assets.Utility;
+using Tamagotchi.Assets.Utility.ExtensionMethods;
 using UnityEngine;
 
-public class InventoryController : CustomMonoBehaviour
+public class InventoryController : PersistentGameObjectSingleton<InventoryController>
 {
     private ItemRepository _ItemRepository;
     public Dictionary<int, int> ItemsInBag;
     public GameManager _GameManager;
-    private static InventoryController inventoryController;
-    public static InventoryController instance
-    {
-        get
-        {
-            if (!inventoryController)
-            {
-                inventoryController = FindObjectOfType(typeof(InventoryController)) as InventoryController;
-
-                if (!inventoryController)
-                {
-                    Debug.LogError("There needs to be one active InventoryController script on a GameObject in your scene.");
-                }
-            }
-
-            return inventoryController;
-        }
-    }
     private void Start()
     {
         ItemsInBag = new Dictionary<int, int>();
-        DontDestroyOnLoad(gameObject);
-        _ItemRepository = FindComponentByObjectTag<ItemRepository>("ItemRepository");
-        _GameManager = FindComponentByObjectTag<GameManager>("GameController");
+        _ItemRepository = this.FindComponentByObjectTag<ItemRepository>("ItemRepository");
+        _GameManager = GameManager.Instance.GetComponent<GameManager>();;
+    }
+    protected override void OnAwake(){
+        
     }
     public void AddItem(int id)
     {

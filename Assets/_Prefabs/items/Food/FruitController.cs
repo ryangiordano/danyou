@@ -3,17 +3,19 @@ using System.Collections;
 using System.Collections.Generic;
 using Tamagotchi.Assets._Prefabs.items;
 using Tamagotchi.Assets.Utility;
+using Tamagotchi.Assets.Utility.ExtensionMethods;
 using UnityEngine;
 
-public class FruitController : CustomMonoBehaviour
+public class FruitController : MonoBehaviour
 {
 
-    public GameManager _GameManager;
     public Transform _Transform;
     public Rigidbody2D _Rigidbody;
     private Animator _Animator;
     public GameObject Body;
     public GameObject Face;
+    public GameManager _GameManager;
+
     private FlushBehavior _FlushBehavior;
     public bool Hanging = false;
     public bool Collected;
@@ -35,7 +37,7 @@ public class FruitController : CustomMonoBehaviour
         _Transform = GetComponent<Transform>();
         _Rigidbody.bodyType = RigidbodyType2D.Static;
 
-        _GameManager = FindComponentByObjectTag<GameManager>("GameController");
+        _GameManager = GameManager.Instance.GetComponent<GameManager>();
         EventManager.StartListening("Tick", () =>
          {
              Ripeness++;

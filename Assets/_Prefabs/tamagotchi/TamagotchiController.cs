@@ -3,10 +3,11 @@ using Tamagotchi.Assets.Utility;
 using Tamagotchi.Assets._Prefabs.items;
 using UnityEngine;
 using System.Collections;
+using Tamagotchi.Assets.Utility.ExtensionMethods;
 
 namespace Tamagotchi.Assets._Prefabs
 {
-    public class TamagotchiController : CustomMonoBehaviour
+    public class TamagotchiController : MonoBehaviour
     {
         public GameManager _GameManager;
         public TamagotchiModel _Tamagotchi;
@@ -18,7 +19,7 @@ namespace Tamagotchi.Assets._Prefabs
             _Tamagotchi = TamagotchiModel.LoadTamagotchi();
 
             _Tamagotchi.LastTick = DateTime.Now;
-            _GameManager = FindComponentByObjectTag<GameManager>("GameController");
+            _GameManager = GameManager.Instance.GetComponent<GameManager>();;
 
 
             _Animator = GetComponent<Animator>();

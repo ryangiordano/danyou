@@ -4,22 +4,20 @@ namespace Tamagotchi.Assets.Utility.ExtensionMethods
 {
     public static class Extension
     {
-        public static GameManager FindGameManager(this MonoBehaviour ob)
+        public static T FindComponentByObjectTag<T>(this MonoBehaviour ob, string tagname)
         {
-            GameObject gameManagerObject = GameObject.FindWithTag("GameController");
-            if (gameManagerObject != null)
+            var gameObject = GameObject.FindWithTag(tagname);
+            if (gameObject != null)
             {
-                var gameManager = gameManagerObject.GetComponent<GameManager>();
-                if (gameManager == null)
+                var component = gameObject.GetComponent<T>();
+                if (component == null)
                 {
-                    Debug.Log("Game manager not found.");
-                    return null;
+                    throw new UnityException("Component not found.");
                 }
-                return gameManager;
+                return component;
 
             }
-            return null;
-
+            throw new UnityException("Game Object not found.");
         }
     }
 }

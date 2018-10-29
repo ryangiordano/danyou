@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using Tamagotchi.Assets._UI;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using Tamagotchi.Assets.Utility.ExtensionMethods;
+
 
 public class MenuController : MonoBehaviour
 {
@@ -9,15 +12,6 @@ public class MenuController : MonoBehaviour
     public List<GameObject> Buttons;
 
     // Use this for initialization
-    void Start()
-    {
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
     public void ToggleMenu(int menuId)
     {
         Buttons.ForEach(b =>
@@ -31,9 +25,11 @@ public class MenuController : MonoBehaviour
             {
                 toggleButton.OpenMenu();
             }
-
-
         });
-        Menus.ForEach(m => m.SetActive(m.active ? !m.active : m.GetComponent<ToggleMenu>().MenuId == menuId));
+        Menus.ForEach(m => m.SetActive(m.activeSelf ? !m.activeSelf : m.GetComponent<ToggleMenu>().MenuId == menuId));
+    }
+    public void LoadScene(int sceneIndex)
+    {
+        SceneManager.LoadScene(sceneIndex);
     }
 }
