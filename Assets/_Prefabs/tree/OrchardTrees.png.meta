@@ -1,39 +1,12 @@
 fileFormatVersion: 2
-guid: b193ba0d3e1ff5c429143d1ab34531a8
+guid: 133680e858ae5f64889499f6c632a1b1
 TextureImporter:
   fileIDToRecycleName:
-    21300000: seeds_0
-    21300002: seeds_1
-    21300004: seeds_2
-    21300006: seeds_3
-    21300008: seeds_4
-    21300010: seeds_5
-    21300012: seeds_6
-    21300014: seeds_7
-    21300016: seeds_8
-    21300018: seeds_9
-    21300020: seeds_10
-    21300022: seeds_11
-    21300024: seeds_12
-    21300026: seeds_13
-    21300028: seeds_14
-    21300030: seeds_15
-    21300032: seeds_16
-    21300034: seeds_17
-    21300036: seeds_18
-    21300038: seeds_19
-    21300040: seeds_20
-    21300042: seeds_21
-    21300044: seeds_22
-    21300046: seeds_23
-    21300048: seeds_24
-    21300050: seeds_25
-    21300052: seeds_26
-    21300054: seeds_27
-    21300056: seeds_28
-    21300058: seeds_29
-    21300060: seeds_30
-    21300062: seeds_31
+    21300000: OrchardTrees_0
+    21300002: OrchardTrees_1
+    21300004: OrchardTrees_2
+    21300006: OrchardTrees_3
+    21300008: OrchardTrees_4
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -116,7 +89,47 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: seeds_0
+      name: OrchardTrees_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc0d12d172d7b9e41bf91f3129d3246f
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OrchardTrees_1
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e924a24bf0f4d649a35fc84cf3c3008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OrchardTrees_2
       rect:
         serializedVersion: 2
         x: 0
@@ -130,13 +143,33 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2e405a2cc1884204bbe6c5e0af6e142a
+      spriteID: ce510cec6bdaece4cabcaf7166c14a46
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: seeds_1
+      name: OrchardTrees_3
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bda825a210f07e846990b19c2b2d65aa
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OrchardTrees_4
       rect:
         serializedVersion: 2
         x: 0
@@ -150,7 +183,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 58b9b9349e430e341b52ddbbab0cfed7
+      spriteID: 475810140ce7d1c4da11e0847cf6ebf8
       vertices: []
       indices: 
       edges: []
@@ -158,7 +191,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: abdb341fba498314c8bc5d95cd1c4619
+    spriteID: 03a5eac59a8039643b2161cdf1c3f0ab
     vertices: []
     indices: 
     edges: []

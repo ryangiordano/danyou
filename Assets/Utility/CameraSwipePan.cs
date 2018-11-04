@@ -25,6 +25,6 @@ public class CameraSwipePan : MonoBehaviour
             return;
         }
 
-        transform.position = new Vector3(Mathf.Clamp(basePos.x + ((clickOrigin.x - dragOrigin.x) * .05f), 0, 100), Mathf.Clamp(basePos.y + ((clickOrigin.y - dragOrigin.y) * .05f), 0, 100), -10);
+        transform.position = new Vector3(Mathf.Clamp(basePos.x + ((clickOrigin.x - dragOrigin.x) * .05f), -100, 100), Mathf.Clamp(basePos.y + ((clickOrigin.y - dragOrigin.y) * .05f), -100, 100), -10);
     }
 }

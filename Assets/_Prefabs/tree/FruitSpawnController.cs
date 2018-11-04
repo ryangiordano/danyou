@@ -33,7 +33,7 @@ public class FruitSpawnController : MonoBehaviour
         var instantiated = Instantiate(fruit);
 
         instantiated.transform.parent = transform;
-        instantiated.transform.localScale = new Vector3(.5f, .5f, 0);
+        instantiated.transform.parent.transform.localScale = new Vector3(.3f, .3f, 0);
         instantiated.transform.localPosition = new Vector3(0, 0, 0);
         var rb = instantiated.GetComponent<Rigidbody2D>();
         rb.isKinematic = true;

@@ -62,7 +62,7 @@ public class TreeNodeController : MonoBehaviour
         }
 
         var tree = Instantiate(activeTree, transform, true);
-        tree.GetComponent<RectTransform>().anchoredPosition = new Vector3(0, 0, 0);
+        tree.GetComponent<Transform>().localPosition = new Vector3(0, 0, 0);
 
     }
     public void SpawnFruit()

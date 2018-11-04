@@ -41,16 +41,16 @@ public class FruitController : MonoBehaviour
         EventManager.StartListening("Tick", () =>
          {
              Ripeness++;
-             if (Ripeness == UntilRipe / 2)
-             {
-                 _Transform.localScale = new Vector3(1.5f, 1.5f, 1);
-             }
-             if (Ripeness >= UntilRipe)
-             {
-                 _Transform.localScale = new Vector3(1.5f, 1.5f, 1);
-                 //  _Rigidbody.bodyType = RigidbodyType2D.Dynamic;
+            //  if (Ripeness == UntilRipe / 2)
+            //  {
+            //      _Transform.localScale = new Vector3(1.5f, 1.5f, 1);
+            //  }
+            //  if (Ripeness >= UntilRipe)
+            //  {
+            //      _Transform.localScale = new Vector3(1.5f, 1.5f, 1);
+            //      //  _Rigidbody.bodyType = RigidbodyType2D.Dynamic;
 
-             }
+            //  }
          });
     }
     public void CollectFruit()
